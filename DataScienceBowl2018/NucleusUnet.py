@@ -41,6 +41,7 @@ np.random.seed = seed
 
 # Get train and test IDs
 train_ids = next(os.walk(TRAIN_PATH))[1]
+# print(train_ids)
 test_ids = next(os.walk(TEST_PATH))[1]
 
 # Get and resize train images and masks
@@ -49,10 +50,10 @@ Y_train = np.zeros((len(train_ids), IMG_HEIGHT, IMG_WIDTH, 1), dtype=np.bool)
 print('Getting and resizing train images and masks ... ')
 sys.stdout.flush()
 for n, id_ in tqdm(enumerate(train_ids), total=len(train_ids)):
-    path = TRAIN_PATH + id_
+    path = TRAIN_PATH + 'id_'
     print('\n',id_)
     print('\n',path)
-    img = imread(path + '/images/' + id_ + '.png')[:,:,:IMG_CHANNELS]
+    img = imread(path + '\images\' + 'id_ + '.png')[:,:,:IMG_CHANNELS]
     img = resize(img, (IMG_HEIGHT, IMG_WIDTH), mode='constant', preserve_range=True)
     X_train[n] = img
     mask = np.zeros((IMG_HEIGHT, IMG_WIDTH, 1), dtype=np.bool)
